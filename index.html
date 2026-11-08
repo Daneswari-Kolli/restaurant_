@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savory Delights | Restaurant & Cafe</title>
+    <style>
+        /* CSS Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #ffaa00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffaa00;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ffaa00;
+            color: #1a1a1a;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e69500;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            color: #1a1a1a;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #ffaa00;
+            margin: 0.5rem auto 0;
+        }
+
+        h3.category-title {
+            font-size: 1.5rem;
+            color: #ffaa00;
+            margin: 2.5rem 0 1.5rem 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Menu Grid Section */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .menu-content {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .menu-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item h4 {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+        }
+
+        .menu-item-price {
+            font-weight: bold;
+            color: #ffaa00;
+            font-size: 1.1rem;
+            margin-left: 1rem;
+            white-space: nowrap;
+        }
+
+        .menu-item p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        /* Footer / Contact Section */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            color: #aaa;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="logo">Savory Delights</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <h1>Experience Authentic Culinary Artistry</h1>
+        <p>Fresh ingredients, traditional recipes, and unforgettable flavors prepared daily for you.</p>
+        <a href="#menu" class="btn">Explore Our Menu</a>
+    </section>
+
+    <div class="container">
+        
+        <!-- About Section -->
+        <section id="about">
+            <h2>Our Story</h2>
+            <div class="about-content">
+                <p>Founded with a passion for exceptional food and warm hospitality, Savory Delights brings together farm-fresh local produce and time-honored cooking techniques. Whether you are joining us for a cozy family dinner or a quick lunch, every meal is crafted to create lasting memories.</p>
+            </div>
+        </section>
+
+        <!-- Menu Section (15 Items with Pictures) -->
+        <section id="menu">
+            <h2>Our Complete Menu</h2>
+
+            <!-- Starters (4 items) -->
+            <h3 class="category-title">Starters</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1599487488170-ded1ec94645fc?auto=format&fit=crop&w=600&q=80" alt="Crispy Calamari" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Crispy Calamari</h4>
+                                <span class="menu-item-price">$12</span>
+                            </div>
+                            <p>Lightly battered and fried squid rings served with house-made zesty tartar sauce.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=600&q=80" alt="Bruschetta al Pomodoro" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Bruschetta al Pomodoro</h4>
+                                <span class="menu-item-price">$9</span>
+                            </div>
+                            <p>Toasted artisanal bread topped with diced tomatoes, fresh garlic, basil, and olive oil.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1608897013039-887f21d8c804?auto=format&fit=crop&w=600&q=80" alt="Stuffed Mushroom Caps" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Stuffed Mushroom Caps</h4>
+                                <span class="menu-item-price">$10</span>
+                            </div>
+                            <p>Button mushrooms filled with herb-seasoned cream cheese and baked with parmesan crust.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1592417817098-8f3d6920405b?auto=format&fit=crop&w=600&q=80" alt="Caprese Skewers" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Caprese Skewers</h4>
+                                <span class="menu-item-price">$8</span>
+                            </div>
+                            <p>Cherry tomatoes, fresh mini mozzarella balls, and basil leaves drizzled with balsamic glaze.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Courses (6 items) -->
+            <h3 class="category-title">Main Courses</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="Truffle Mushroom Burger" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Truffle Mushroom Burger</h4>
+                                <span class="menu-item-price">$16</span>
+                            </div>
+                            <p>Brioche bun, grilled beef patty, wild mushrooms, truffle aioli, and aged swiss cheese.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=600&q=80" alt="Wood-Fired Margherita Pizza" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Wood-Fired Margherita Pizza</h4>
+                                <span class="menu-item-price">$14</span>
+                            </div>
+                            <p>San Marzano tomato sauce, fresh mozzarella, organic basil, and extra virgin olive oil.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80" alt="Grilled Herb Salmon" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Grilled Herb Salmon</h4>
+                                <span class="menu-item-price">$22</span>
+                            </div>
+                            <p>Atlantic salmon fillet served with garlic herb butter, asparagus, and roasted baby potatoes.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=600&q=80" alt="Chicken Fettuccine Alfredo" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Chicken Fettuccine Alfredo</h4>
+                                <span class="menu-item-price">$17</span>
+                            </div>
+                            <p>Tender grilled chicken strips tossed in a rich, creamy parmesan and garlic sauce over pasta.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=600&q=80" alt="Ribeye Steak" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Ribeye Steak</h4>
+                                <span class="menu-item-price">$28</span>
+                            </div>
+                            <p>Prime cut beef steak grilled to perfection, served with seasonal vegetables and peppercorn sauce.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=600&q=80" alt="Vegetable Lasagna" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Vegetable Lasagna</h4>
+                                <span class="menu-item-price">$15</span>
+                            </div>
+                            <p>Layered pasta sheets with rich marinara, ricotta, spinach, zucchini, and melted mozzarella.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts (3 items) -->
+            <h3 class="category-title">Desserts</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80" alt="Classic Tiramisu" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Classic Tiramisu</h4>
+                                <span class="menu-item-price">$8</span>
+                            </div>
+                            <p>Ladyfingers soaked in espresso, layered with rich mascarpone cream and dusted with cocoa.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=600&q=80" alt="New York Cheesecake" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>New York Cheesecake</h4>
+                                <span class="menu-item-price">$9</span>
+                            </div>
+                            <p>Smooth and creamy traditional cheesecake topped with a tart mixed berry compote.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=600&q=80" alt="Molten Lava Cake" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Molten Lava Cake</h4>
+                                <span class="menu-item-price">$10</span>
+                            </div>
+                            <p>Warm chocolate cake with a gooey, flowing center, served with a scoop of vanilla ice cream.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beverages (2 items) -->
+            <h3 class="category-title">Beverages</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" alt="Artisanal Iced Berry Lemonade" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Artisanal Iced Berry Lemonade</h4>
+                                <span class="menu-item-price">$5</span>
+                            </div>
+                            <p>Freshly squeezed lemons blended with house-made mixed berry syrup and mint leaves.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=600&q=80" alt="Cold Brew Iced Coffee" class="menu-img">
+                    <div class="menu-content">
+                        <div>
+                            <div class="menu-header-row">
+                                <h4>Cold Brew Iced Coffee</h4>
+                                <span class="menu-item-price">$6</span>
+                            </div>
+                            <p>Steeped for 24 hours for a smooth, bold flavor, served over ice with a splash of cream.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Contact & Hours Footer -->
+    <footer id="contact">
+        <div class="footer-info">
+            <div>
+                <h3>Hours of Operation</h3>
+                <p>Mon - Thu: 11:00 AM - 10:00 PM</p>
+                <p>Fri - Sun: 10:00 AM - 11:30 PM</p>
+            </div>
+            <div>
+                <h3>Location & Contact</h3>
+                <p>123 Culinary Avenue, Food District</p>
+                <p>Phone: (555) 123-4567</p>
+            </div>
+        </div>
+        <p>&copy; 2026 Savory Delights. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
